@@ -1,26 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        
-<title>Kaverilista</title>
+<title>Clicker-peli</title>
+<meta charset="UTF-8">
+
+<style>
+#työntekijä {
+    display: none;
+}
+</style>
+
 </head>
+
 <body>
 
-<h1>Kaverilista</h1>
+   <button onclick="klikkaus()">Click</button><br><br>
 
-<br>
-<input type="text" id="nimi_kentta">
-<button onclick="lisaaKaveri()">Lisää Kaveri</button>
-<button onclick="poistaKaveri()">Poista Kaveri</button>
-<button onclick="jarjestaKaveri()">Järjestä Kaverit</button>
+   <button onclick="lisaaTyontekija()">Palkkaa työntekijä</button> Cost: 25 (Klikkaukset nousee +1)
+   
+   <div id="klikit"></div>
 
-<ul id="frendit">
+   <p id="ker"></p>
 
-</ul>
+   <script>
+   
+   var laskuri = 0;
+   var kerroin = 1;
 
-<script src="main.js"></script>
+    function klikkaus(){
+        laskuri += 1 * kerroin;
+        console.log('Pisteet: ' + laskuri);
+        tulosta();
+    }
+
+    function lisaaTyontekija(){
+        if (laskuri >= 25) {
+            console.log("Palkkasit röiukon!");
+            laskuri = laskuri-25;
+            kerroin++
+            tulosta();
+            console.log('Työukot: ' + kerroin);
+
+            
+        }
+    }
+
+
+
+    function tulosta(){
+        console.log(laskuri);
+        document.getElementById('klikit').innerHTML = laskuri;
+        document.getElementById('ker').innerHTML = "Työntekijöitä: " + kerroin;
+
+
+    }   
+    
+   </script>
+
 
 </body>
+
 </html>
